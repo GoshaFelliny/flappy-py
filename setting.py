@@ -19,3 +19,4 @@ obstacle_img = pg.image.load(os.path.join(media_folder, 'obstacle.png'))
 background_img = pg.image.load(os.path.join(media_folder, 'Iast1tOF9yA.jpg'))
 
 decrypted = os.path.join(font_folder, 'Decrypted.ttf')
+clock = pg.time.Clock()

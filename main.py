@@ -1,17 +1,12 @@
 import random
-import asyncio
-import time
-
-from Obstacle import Obstacle
-from setting import *
-from Player import Player
+from entity.Obstacle import Obstacle
+from entity.Player import Player
+from my_scene import *
 
 pg.init()
 
 screen = pg.display.set_mode((setting['w'], setting['h']))
 pg.display.set_caption(setting['title'])
-
-clock = pg.time.Clock()
 
 obstacle_group = pg.sprite.Group()
 all_sprite = pg.sprite.Group()
@@ -41,7 +36,6 @@ pg.time.set_timer(SPAWN_SPRITE, 1500)
 pg.time.set_timer(pg.USEREVENT, 50)
 
 run = True
-
 score = 0
 while run:
 
@@ -64,8 +58,9 @@ while run:
     if pg.sprite.spritecollide(player, obstacle_group, False, pg.sprite.collide_circle):
         screen.blit(text_surface, (300 - center_t_x, 300 - center_t_y))
         run = False
+        lose_game(score)
 
-    screen.blit(score_surface, (300, 20))
+    screen.blit(score_surface, (270, 20))
 
     pg.display.flip()
 
