@@ -14,7 +14,7 @@ all_sprite = pg.sprite.Group()
 player = Player()
 all_sprite.add(player)
 
-font = pg.font.Font(decrypted, 70)
+font = pg.font.SysFont('Arial', 90)
 score_surface = font.render('0', True, (255, 255, 255))
 
 
@@ -43,16 +43,16 @@ while run:
             run = False
         if event.type == SPAWN_SPRITE:
             new_mobs()
+
         if event.type == pg.USEREVENT:
             score_surface = font.render(f"{score}", True, 'white')
-            score += 1
+
 
     all_sprite.update()
     all_sprite.draw(screen)
 
     if pg.sprite.spritecollide(player, obstacle_group, False, pg.sprite.collide_circle):
         run = False
-        lose_game(score)
 
     screen.blit(score_surface, (270, 20))
 
