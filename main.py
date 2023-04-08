@@ -14,12 +14,7 @@ all_sprite = pg.sprite.Group()
 player = Player()
 all_sprite.add(player)
 
-font = pg.font.Font(decrypted, 100)
-text_surface = font.render("Game Over", True, (255, 255, 255))
-text_center = text_surface.get_rect().center
-center_t_x, center_t_y = text_center
-
-score_font = pg.font.Font(decrypted, 70)
+font = pg.font.Font(decrypted, 70)
 score_surface = font.render('0', True, (255, 255, 255))
 
 
@@ -56,7 +51,6 @@ while run:
     all_sprite.draw(screen)
 
     if pg.sprite.spritecollide(player, obstacle_group, False, pg.sprite.collide_circle):
-        screen.blit(text_surface, (300 - center_t_x, 300 - center_t_y))
         run = False
         lose_game(score)
 
